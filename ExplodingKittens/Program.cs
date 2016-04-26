@@ -2,13 +2,12 @@
 
 namespace ExplodingKittens
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Welcome to Exploding Kittens.");
-            new GameLoop().Start();
-            Console.ReadKey();
-        }
-    }
+	public class Program
+	{
+		public static void Main(string[] args)
+		{
+			new GameLoop().Setup();
+			Console.ReadKey();
+		}
+	}
 }

@@ -40,7 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cards\CardType.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\Convert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Severity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

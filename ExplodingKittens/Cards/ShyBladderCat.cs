@@ -1,12 +1,11 @@
 ﻿
 namespace ExplodingKittens.Cards
 {
-    public class ShyBladderCat : Pair
-    {
-        public ShyBladderCat()
-            : base("Shy Bladder Cat")
-        {
-            
-        }
-    }
+	public class ShyBladderCat : Pair
+	{
+		public ShyBladderCat(Game game, int id)
+			: base(game, id, "Shy Bladder Cat")
+		{
+		}
+	}
 }

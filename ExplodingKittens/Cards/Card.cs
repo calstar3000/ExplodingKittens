@@ -1,34 +1,42 @@
-﻿using System;
-
-namespace ExplodingKittens.Cards
+﻿namespace ExplodingKittens.Cards
 {
-    public abstract class Card
-    {
-        public string Name { get; set; }
-        public string TagLine { get; set; }
-        public string Explanation { get; set; }
+	public abstract class Card : ICard
+	{
+		public Game Game { get; set; }
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public string TagLine { get; set; }
+		public string Explanation { get; set; }
+		public bool IsSelected { get; set; }
 
-        public Card(string name)
-        {
-            Name = name;
-        }
+		public Card() { }
 
-        public Card(string name, string explanation)
-        {
-            Name = name;
-            Explanation = explanation;
-        }
+		public Card(Game game, int id, string name)
+		{
+			Game = game;
+			Id = id;
+			Name = name;
+		}
 
-        public Card(string name, string tagLine, string explanation)
-        {
-            Name = name;
-            TagLine = tagLine;
-            Explanation = explanation;
-        }
+		public Card(Game game, int id, string name, string explanation)
+			: this(game, id, name)
+		{
+			Explanation = explanation;
+		}
 
-        public override string ToString()
-        {
-            return string.Format("{0}: {1} {{{2}}}", Name, TagLine, Explanation);
-        }
-    }
+		public Card(Game game, int id, string name, string tagLine, string explanation)
+			: this(game, id, name, explanation)
+		{
+			TagLine = tagLine;
+		}
+
+		public override string ToString()
+		{
+			return string.Format("{0:00}. {1}: {2} {{{3}}}", Id, Name, TagLine, Explanation);
+		}
+
+		public abstract ActionResponse Play(Player player);
+
+		public abstract ActionResponse Play();
+	}
 }
