@@ -1,4 +1,4 @@
-﻿namespace ExplodingKittens
+﻿namespace ExplodingKittens.Players
 {
 	public class NullPlayer : Player
 	{

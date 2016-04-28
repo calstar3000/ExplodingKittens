@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using ExplodingKittens.Players;
 
 namespace ExplodingKittens.Tests
 {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ExplodingKittens.Players;
+using System.Collections.Generic;
 
 namespace ExplodingKittens.Cards
 {

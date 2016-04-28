@@ -1,5 +1,6 @@
 ﻿using ExplodingKittens.Cards;
 using ExplodingKittens.Enums;
+using ExplodingKittens.Players;
 using ExplodingKittens.Writers;
 using System;
 using System.Collections.Generic;
@@ -172,22 +173,33 @@ namespace ExplodingKittens
 		/// <summary>
 		/// Take an action based on the current command entered into the console
 		/// </summary>
-		public Commands.ICommand GetCommand(string currentCommand, Player currentPlayer, int currentCardIndex, int currentPlayerTargetIndex)
+		public Commands.ICommand GetCommand(string fullCommand, Player currentPlayer)
 		{
-			switch (Enums.Commands.Convert.Command(currentCommand))
+			string[] commandParts = fullCommand.Split(' ');
+
+			if (commandParts.Length <= 0 || string.IsNullOrEmpty(commandParts[0]))
+				return new Commands.UnknownCommand();
+
+			string command = commandParts[0].Trim();
+
+			int targetIndex = 0;
+			if (commandParts.Length > 1 && !int.TryParse(commandParts[1], out targetIndex) && targetIndex > 0)
+				return new Commands.UnknownCommand();
+
+			switch (Enums.Commands.Convert.Command(command))
 			{
 				case Enums.Commands.Command.Hand:
 					return new Commands.HandCommand(currentPlayer);
 				case Enums.Commands.Command.Draw:
 					return new Commands.DrawCommand(currentPlayer);
 				case Enums.Commands.Command.Select:
-					return new Commands.SelectCommand(currentPlayer, currentCardIndex);
+					return new Commands.SelectCommand(currentPlayer, targetIndex);
 				case Enums.Commands.Command.Deselect:
-					return new Commands.DeselectCommand(currentPlayer, currentCardIndex);
+					return new Commands.DeselectCommand(currentPlayer, targetIndex);
 				case Enums.Commands.Command.Play:
-					return new Commands.PlayCommand(this, currentPlayer, currentPlayerTargetIndex);
+					return new Commands.PlayCommand(this, currentPlayer, targetIndex);
 				case Enums.Commands.Command.Give:
-					return new Commands.GiveCommand(this, currentPlayer, currentPlayerTargetIndex);
+					return new Commands.GiveCommand(this, currentPlayer, targetIndex);
 				case Enums.Commands.Command.Deck:
 					return new Commands.DeckCommand(Deck);
 				case Enums.Commands.Command.Status:
@@ -212,7 +224,7 @@ namespace ExplodingKittens
 		}
 
 		/// <summary>
-		/// Deal a defuse card to each play and add the remaining cards to the deck and shuffle
+		/// Deal a defuse card to each player then add the remaining cards to the deck and shuffle
 		/// </summary>
 		private void DealDefuseCards()
 		{

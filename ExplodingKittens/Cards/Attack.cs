@@ -1,4 +1,6 @@
 ﻿
+using ExplodingKittens.Players;
+
 namespace ExplodingKittens.Cards
 {
 	public class Attack : Card

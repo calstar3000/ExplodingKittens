@@ -2,7 +2,7 @@
 using System;
 using System.Text;
 
-namespace ExplodingKittens
+namespace ExplodingKittens.Players
 {
 	public class Player
 	{

@@ -1,4 +1,6 @@
-﻿namespace ExplodingKittens.Cards
+﻿using ExplodingKittens.Players;
+
+namespace ExplodingKittens.Cards
 {
 	public interface ICard
 	{

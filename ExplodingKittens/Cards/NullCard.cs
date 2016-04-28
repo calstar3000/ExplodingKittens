@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExplodingKittens.Players;
+using System;
 
 namespace ExplodingKittens.Cards
 {

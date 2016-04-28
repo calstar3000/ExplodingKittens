@@ -95,5 +95,12 @@ namespace ExplodingKittens
 				Writer.WriteLine();
 			}
 		}
+
+		public void PrintAll()
+		{
+			Writer.WriteLine();
+			PrintErrors();
+			PrintMessages();
+		}
 	}
 }

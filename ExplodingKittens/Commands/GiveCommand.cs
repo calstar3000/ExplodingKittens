@@ -1,4 +1,6 @@
 ﻿
+using ExplodingKittens.Players;
+
 namespace ExplodingKittens.Commands
 {
 	public class GiveCommand : ICommand
